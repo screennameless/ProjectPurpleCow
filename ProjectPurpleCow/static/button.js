@@ -6,7 +6,7 @@ function clickCallback(html_id, callback) {
 }
 
 //Register the button to respond to click events
-function register_button(button_id, callback) {
+function registerButton(button_id, callback) {
     html_id = "#" + button_id; //Generate HTML element ID name
 
     //Register click callback
