@@ -4,7 +4,7 @@ This project was built by Caleb M. Godwin for Fearless. It is a simple server th
 
 ## Running Automatically
 
-Before running, please ensure that you add your API keys to `ProjectPurpleCow/config.json`. See [Configuration](#configuration) and [Test API Keys](#test_api_keys).
+Before running, please ensure that you add your API keys to `ProjectPurpleCow/config.json`. See [Configuration](#configuration) and [Test API Keys](#test-api-keys).
 
 This project uses Docker and provides a simple shell script to build and run the project automatically. Before running, make sure you have Docker and Bash installed. Then simply clone this repository, `cd` into the project's directory root, and execute:
 
