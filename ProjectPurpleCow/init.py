@@ -1,32 +1,35 @@
 import json
 from main import app
 
-port = 8080 # default port
-host = "0.0.0.0" # default host
+# Attempt to retrieve value for key in config file
+# This is for critical configuration info, so program will exit if it fails
+# convert_func must be a function that converts one value to another, e.g. "str" or "int"
+def try_get_key(config, key, convert_func):
+    try:
+        return convert_func(config[key])
+    except KeyError: # Key does not exist
+        print("Could not find \"{}\" key in your configuration! Add this key-value pair and try again.".format(key))
+        quit()
+    except ValueError: # Value cannot be converted to the requested type (specified by convert_func)
+        print("Value for key \"{}\" in your configuration is not valid! Fix this and try again.".format(key))
+        quit()
+    except Exception as e: # Some other bad thing happened
+        print("An error occured while trying to read key \"{}\" in your configuration! Error was: \"{}\".".format(key, e))
+        quit()
 
 # Load configuration file
 try:
     config = json.load(open("config.json", 'r'))
 except FileNotFoundError:   # "config.json" does not exist
-    pass
+    print("Failed to open \"config.json\"! Check this file and try again.")
+    quit()
 except json.decode.JSONDecodeError: # File is not formatted correctly
-    pass
+    print("Failed to parse \"config.json\"! Check JSON syntax and try again.")
+    quit()
 
-# Retrieve port config value, if it exists
-try:
-    port = int(config["port"])
-except KeyError: # Key "port" does not exist
-    pass
-except ValueError: # Value for "port" is not an integer
-    pass
+# Retrieve needed values from config
+port = try_get_key(config, "port", int)
+host = try_get_key(config, "host", str)
 
-# Retrieve host config value, if it exists
-try:
-    host = str(config["host"])
-except KeyError: # Key "host" does not exist
-    pass
-except ValueError: # Value for "host" cannot be converted to a string
-    pass
-
-# Run the application on the port specified in config, or 8080 if not specified
+# Run the application
 app.run(port=port, host=host)
