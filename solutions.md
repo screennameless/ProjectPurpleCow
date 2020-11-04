@@ -51,6 +51,8 @@ For the test case, it is acceptable to add the following keys to `ProjectPurpleC
 * For button 2, use `dkgrv7rr-qkxu-3m25-pa9j-tdkqar5u7jga`
 * For button 3, use `4ctuy8tt-7pob-bvas-72do-uzjz937c7waz`
 
+Make sure that each key is in quotes in the configuration file, as they are strings!
+
 ## Adding More Buttons
 
 The code handling the button is fully reusable. You may add as many as you wish, as long as each has a valid API key as shown above. To add a button in an HTML file with Bootstrap styling, the following will work:
@@ -85,4 +87,4 @@ The content of `response` will be text containing either the result or some erro
 1. This project was written in the Flask framework due the small size. If the project is to scale up to large or very-large size, it may be wise to move to a framework that is more apt to support such projects, such as Django.
 2. This was written with security in mind. As such, the button click event sends a request to the `/hit/` endpoint on the server, which then picks up the relevant API key from configuration and then sends a request to CountAPI. This prevents the API key from being exposed to the public. However, this could be problematic at scale as each request requires two HTTP requests. Depending upon the level of security needed, it could be wise to move the CountAPI call to pure JavaScript.
 3. Flask uses the Jinja2 template rendering engine. In this project, `base.html` contains generic markup and provides blocks to fill in, and each file extends from that. To create a document with a completely new style it will be necessary to either create a different template or change the existing one.
-4. The program is designed to run on Linux only and may work on macOS. Due to limited time, researching Docker on Windows was not an option. However, this could likely be achieved with relative ease.
+4. The program is designed to run on Linux only and may work on macOS. Windows is not currently supported, however this could likely be achieved with relative ease.
