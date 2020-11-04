@@ -9,10 +9,17 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     try:
-        config = get_config()
         return render_template("index.html")
     except Exception as e:
-        return render_template("error.html", error="There was a problem with the application's configuration file.", error_content=str(e))
+        return render_template("error.html", error="There is a problem with the application.", error_content=str(e))
+
+# Route for multiple button example
+@app.route("/multi")
+def multi():
+    try:
+        return render_template("multi.html")
+    except Exception as e:
+        return render_template("error.html", error="There is a problem with the application.", error_content=str(e))
 
 # Route for /hit/... takes button_id parameter that must match API keys in config.json
 @app.route("/hit/<string:button_id>")

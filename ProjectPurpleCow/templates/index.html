@@ -3,16 +3,13 @@
 {% block title %}Project Purple Cow{% endblock %}
 
 {% block head %}
+    <script src="{{ url_for('static', filename='button.js') }}"></script>
+
     <script>
         $(document).ready(function() {
-            $("#hitbutton").click(function() {
-                if(!$("#hitbutton").hasClass("disabled")) {
-                    $("#hitbutton").addClass("disabled");
-                    $.get("/hit/button1", function(response) {
-                        $("#results").text(response);
-                        $("#hitbutton").removeClass("disabled");
-                    })
-                }
+            //Register the button to print results to #results
+            register_button("button1", function(response) {
+                $("#results").text(response);
             });
         });
     </script>
@@ -24,9 +21,11 @@
 
 {% block content %}
     <p>Press the button below to increment and display the counter.</p>
-    <p>
-        <button type="button" class="btn btn-primary" id="hitbutton">Hit the Counter!</button>
-        <span style="padding-left:20px"></span>
-        <span id="results"></span>
-    </p>
+    <p><a href="/multi">Click here</a> to view an example with multiple buttons to show code reusability.</p>
+    <table>
+        <tr>
+            <td><button type="button" class="btn btn-primary" id="button1">Hit the Counter!</button></td>
+            <td id="results"></td>
+        </tr>
+    </table>
 {% endblock %}

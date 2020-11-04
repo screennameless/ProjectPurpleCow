@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Project Purple Cow{% endblock %}
+
+{% block head %}
+    <script src="{{ url_for('static', filename='button.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            //Register button 1 to print response to #results1
+            register_button("button1", function(response) {
+                $("#results1").text(response);
+            });
+
+            //Register button 2
+            register_button("button2", function(response) {
+                $("#results2").text(response);
+            });
+
+            //Register button 3
+            register_button("button3", function(response) {
+                $("#results3").text(response);
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block header %}
+    <h1>Project Purple Cow: Multi-Button Example</h1>
+{% endblock %}
+
+{% block content %}
+    <p>Press any of the buttons below to increment and display the counters.</p>
+    <table>
+        <tr>
+            <td><button type="button" class="btn btn-primary" id="button1">Hit Counter 1!</button></td>
+            <td id="results1"></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="btn btn-success" id="button2">Hit Counter 2!</button></td>
+            <td id="results2"></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="btn btn-danger" id="button3">Hit Counter 3!</button></td>
+            <td id="results3"></td>
+        </tr>
+    </table>
+{% endblock %}
