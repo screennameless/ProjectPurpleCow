@@ -4,8 +4,21 @@
 echo Building Project Purple Cow...
 sudo docker build -t projectpurplecow:latest .
 
-# Retrieve desired port from config file
-PORT=$(python3 -c "import json; print(json.load(open('ProjectPurpleCow/config.json', 'r'))['port'])")
+# Find local Python command (is it python or python3?)
+if ! command -v python &> /dev/null; then
+    if ! command -v python3 &> /dev/null; then
+        echo
+        echo Failed to find Python on your system! Is it installed?
+        exit
+    else
+        PYTHONCOMMAND=python3
+    fi
+else
+    PYTHONCOMMAND=python
+fi
+
+# Attempt to load port from configuration file
+PORT=$($PYTHONCOMMAND -c "import json; print(json.load(open('ProjectPurpleCow/config.json', 'r'))['port'])")
 [ -n "$PORT" ] && [ "$PORT" -eq "$PORT" ] 2>/dev/null # Check if $PORT is a valid number
 if [ $? -ne 0 ]; then
     echo

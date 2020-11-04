@@ -2,11 +2,19 @@
 
 This project was built by Caleb M. Godwin for Fearless. It is a simple server that provides one or more buttons that, when clicked, hit the [CountAPI](https://countapi.xyz/) API and display the results.
 
+## Prerequisites
+
+To successfully run this project, you must have the following on your system:
+* A GNU/Linux distribution with root access. macOS has not been tested, but may work.
+* Docker
+* Python
+* Bash
+
 ## Running Automatically
 
 Before running, please ensure that you add your API keys to `ProjectPurpleCow/config.json`. See [Configuration](#configuration) and [Test API Keys](#test-api-keys).
 
-This project uses Docker and provides a simple shell script to build and run the project automatically. Before running, make sure you have Docker and Bash installed. Then simply clone this repository, `cd` into the project's directory root, and execute:
+This project uses Docker and provides a simple shell script to build and run the project automatically. Before running, make sure you have Python, Docker and Bash installed on your system. Then simply clone this repository, `cd` into the project's directory root, and execute:
 
 	# chmod +x start.sh
 	# ./start.sh
