@@ -14,11 +14,10 @@ To successfully run this project, you must have the following on your system:
 
 Before running, please ensure that you add your API keys to `ProjectPurpleCow/config.json`. See [Configuration](#configuration) and [Test API Keys](#test-api-keys).
 
-This project uses Docker and provides a simple shell script to build and run the project automatically. Before running, make sure you have Python, Docker and Bash installed on your system. Then simply clone this repository, `cd` into the project's directory root, and execute:
+This project uses Docker and provides a simple shell script to build and run the project automatically. Before running, make sure you have [all prerequisites](#prerequisites) installed on your system. Then simply clone this repository, `cd` into the project's directory root, and execute:
 
-	# chmod +x start.sh
 	# ./start.sh
-If all goes well, you will receive output stating:
+If you receive permission errors, run `# chmod +x start.sh` and try again. When all goes well, you will receive output stating:
 
 	Project Purple Cow is running on port [your port]. To stop, use "sudo docker stop [id]" where [id] is (at least part of) the container ID shown above.
 
