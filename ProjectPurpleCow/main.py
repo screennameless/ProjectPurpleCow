@@ -8,8 +8,8 @@ app = Flask(__name__)
 def index():
     try:
         config = get_config()
-        return render_template("index.html")
+        return render_template("index.html", api_key=config["api_key"])
     except Exception as e:
-        return render_template("error.html", error="There was a problem retrieving the application's configuration file.", error_content=str(e))
+        return render_template("error.html", error="There was a problem with the application's configuration file.", error_content=str(e))
         
     

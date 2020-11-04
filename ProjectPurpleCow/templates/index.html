@@ -1,8 +1,32 @@
 {% extends "base.html" %}
+
 {% block title %}Project Purple Cow{% endblock %}
+
+{% block head %}
+    <script>
+        $(document).ready(function() {
+            $("#hitbutton").click(function() {
+                if(!$("#hitbutton").hasClass("disabled")) {
+                    $("#hitbutton").addClass("disabled");
+                    $.getJSON("https://api.countapi.xyz/hit/{{ api_key }}", function(response) {
+                        $("#results").text("Number of hits is " + response.value + ".");
+                        $("#hitbutton").removeClass("disabled");
+                    })
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
 {% block header %}
     <h1>Project Purple Cow</h1>
 {% endblock %}
+
 {% block content %}
-    <p>Hello world!</p>
+    <p>Press the button below to increment and display the counter.</p>
+    <p>
+        <button type="button" class="btn btn-primary" id="hitbutton">Hit the Counter!</button>
+        <span style="padding-left:20px"></span>
+        <span id="results"></span>
+    </p>
 {% endblock %}
