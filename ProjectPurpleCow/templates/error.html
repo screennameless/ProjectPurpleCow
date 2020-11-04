@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Error | Project Purple Cow{% endblock %}
+{% block header %}
+    <h1>Error!</h1>
+{% endblock %}
+{% block content %}
+    <p>{{ error }}</p>
+    <p>Error received was: "{{ error_content }}"</p>
+{% endblock %}
