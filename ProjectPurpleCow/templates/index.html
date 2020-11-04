@@ -8,8 +8,8 @@
             $("#hitbutton").click(function() {
                 if(!$("#hitbutton").hasClass("disabled")) {
                     $("#hitbutton").addClass("disabled");
-                    $.getJSON("https://api.countapi.xyz/hit/{{ api_key }}", function(response) {
-                        $("#results").text("Number of hits is " + response.value + ".");
+                    $.get("/hit/button1", function(response) {
+                        $("#results").text(response);
                         $("#hitbutton").removeClass("disabled");
                     })
                 }
